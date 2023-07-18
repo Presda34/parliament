@@ -1,27 +1,52 @@
-"use client";
+'use client';
 
-import ApprovalBar from "@/components/approvalBar";
-import FactionControlPanel from "@/components/factionControlPanel";
-import ParliamentSimulator from "@/components/parliamentSimulator";
-import VotingOverview from "@/components/votingOverview";
-import { FactionVotingBehaviour, Parliament, ParliamentVotingBehaviour } from "@/schema/schema";
-import { useState } from "react";
-import { parliamentInformation } from "../parlamentInformation";
+import ApprovalBar from '@/components/approvalBar';
+import FactionControlPanel from '@/components/factionControlPanel';
+import ParliamentSimulator from '@/components/parliamentSimulator';
+import VotingOverview from '@/components/votingOverview';
+import {
+  FactionVotingBehaviour,
+  Group,
+  GroupedFaction,
+  MemberFaction,
+  Parliament,
+  ParliamentVotingBehaviour,
+} from '@/schema/schema';
+import { useState } from 'react';
+import { parliamentInformation } from '../parlamentInformation';
 
 type Props = {
   params: {
-    country: string
-  }
-}
+    country: string;
+  };
+};
 
 export default function DE({ params }: Props) {
+  const parliamentData = parliamentInformation.find(
+    (parliament) => parliament.country === params.country,
+  );
+  if (!parliamentData) return 'Error!';
+  const parliament = new Parliament(
+    parliamentData.name,
+    parliamentData.country,
+    parliamentData.factions.map((factionData) => {
+      if (Array.isArray(factionData.deputies)) {
+        return new GroupedFaction(
+          factionData.name,
+          factionData.color,
+          factionData.deputies.map((groupData) => {
+            return new Group(groupData.name, groupData.deputies);
+          }),
+        );
+      } else {
+        return new MemberFaction(
+          factionData.name,
+          factionData.color,
+          factionData.deputies,
+        );
+      }
+    }),
+  );
 
-  const parliament = parliamentInformation.find(parliament => parliament.country === params.country)
-  if (parliament) {
-    return <ParliamentSimulator parliamentInformation={parliament} />
-  } else {
-    return "Error!"
-  }
+  return <ParliamentSimulator initialParliament={parliament} />;
 }
-
-

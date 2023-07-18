@@ -1,45 +1,84 @@
-"use client"
+'use client';
 
-import { Faction, FactionVotingBehaviour, FactionVotingBehaviourSetter } from "@/schema/schema"
-import { FiThumbsUp, FiCircle, FiThumbsDown } from "react-icons/fi"
+import { Faction, GroupedFaction, MemberFaction } from '@/schema/schema';
+import { Lato } from 'next/font/google';
+import { FiThumbsUp, FiCircle, FiThumbsDown } from 'react-icons/fi';
+import GroupControlLine from './groupControlLine';
 
 type Props = {
-  faction: Faction,
-  votingBehaviour: FactionVotingBehaviour,
-  setVotingBehaviour: FactionVotingBehaviourSetter
-}
+  faction: Faction;
+  onUpdate: () => void;
+};
 
-export default function FactionControlPanel({ faction, votingBehaviour, setVotingBehaviour }: Props) {
-  return <div className="flex border-2 justify-between rounded-lg p-4">
-    <div className="flex gap-4 items-center">
-      <div className="rounded-full w-4 h-4" style={{ backgroundColor: faction.color }}></div>
-      {faction.name}
+const latoBold = Lato({ subsets: ['latin'], weight: '700' });
+
+export default function FactionControlPanel({ faction, onUpdate }: Props) {
+  function updateVotingBehaviour(state: 'yes' | 'abstention' | 'no') {
+    if (faction instanceof MemberFaction) {
+      faction.setVotingBehaviour({
+        yes: state === 'yes' ? faction.getDeputies() : 0,
+        abstentions: state === 'abstention' ? faction.getDeputies() : 0,
+        no: state === 'no' ? faction.getDeputies() : 0,
+      });
+    } else if (faction instanceof GroupedFaction) {
+      faction.getGroups().forEach((group) =>
+        group.setVotingBehaviour({
+          yes: state === 'yes' ? group.getDeputies() : 0,
+          abstentions: state === 'abstention' ? group.getDeputies() : 0,
+          no: state === 'no' ? group.getDeputies() : 0,
+        }),
+      );
+    }
+    onUpdate();
+  }
+
+  return (
+    <div className="flex border-2 flex-col p-4 rounded-lg gap-2">
+      <div className="flex  justify-between">
+        <div className="flex gap-4 items-center">
+          <div
+            className="rounded-full w-4 h-4"
+            style={{ backgroundColor: faction.getColor() }}
+          ></div>
+          <div className={latoBold.className}>{faction.getName()}</div>
+        </div>
+        <div className="flex gap-2">
+          <button onClick={() => updateVotingBehaviour('yes')}>
+            <FiThumbsUp
+              className={`hover:stroke-green-600 ${
+                faction.getVotingBehaviour().yes === faction.getDeputies() &&
+                'stroke-green-600'
+              }`}
+            />
+          </button>
+          <button onClick={() => updateVotingBehaviour('abstention')}>
+            <FiCircle
+              className={`hover:stroke-yellow-600 ${
+                faction.getVotingBehaviour().abstentions ===
+                  faction.getDeputies() && 'stroke-yellow-600'
+              }`}
+            />
+          </button>
+          <button onClick={() => updateVotingBehaviour('no')}>
+            <FiThumbsDown
+              className={`hover:stroke-red-600 ${
+                faction.getVotingBehaviour().no === faction.getDeputies() &&
+                'stroke-red-600'
+              }`}
+            />
+          </button>
+        </div>
+      </div>
+      {faction instanceof GroupedFaction &&
+        faction
+          .getGroups()
+          .map((group) => (
+            <GroupControlLine
+              key={group.getName()}
+              group={group}
+              onUpdate={onUpdate}
+            />
+          ))}
     </div>
-    <div className="flex gap-2">
-      <button onClick={
-        () => setVotingBehaviour(
-          {
-            name: votingBehaviour.name,
-            color: votingBehaviour.color,
-            index: votingBehaviour.index,
-            votingBehaviour: typeof faction.deputies === 'number' ? { yes: faction.deputies, abstentions: 0, no: 0 } : faction.deputies.map(group => ({ name: group.name, votingBehaviour: { yes: group.deputies, abstentions: 0, no: 0 } }))
-          })}><FiThumbsUp className="hover:stroke-green-600" /></button>
-      <button onClick={
-        () => setVotingBehaviour(
-          {
-            name: votingBehaviour.name,
-            color: votingBehaviour.color,
-            index: votingBehaviour.index,
-            votingBehaviour: typeof faction.deputies === 'number' ? { yes: 0, abstentions: faction.deputies, no: 0 } : faction.deputies.map(group => ({ name: group.name, votingBehaviour: { yes: 0, abstentions: group.deputies, no: 0 } }))
-          })}><FiCircle className="hover:stroke-yellow-600" /></button>
-      <button onClick={
-        () => setVotingBehaviour(
-          {
-            name: votingBehaviour.name,
-            color: votingBehaviour.color,
-            index: votingBehaviour.index,
-            votingBehaviour: typeof faction.deputies === 'number' ? { yes: 0, abstentions: 0, no: faction.deputies } : faction.deputies.map(group => ({ name: group.name, votingBehaviour: { yes: 0, abstentions: 0, no: group.deputies } }))
-          })}><FiThumbsDown className="hover:stroke-red-600" /></button>
-    </div>
-  </div >
+  );
 }
