@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className='flex flex-col container mx-auto gap-4 p-16'>
+    <div className='flex flex-col container mx-auto gap-4 py-16 px-6 md:px-16'>
       <H1>Parliament Simulator</H1>
       <H2>Welcome!</H2>
       <p>

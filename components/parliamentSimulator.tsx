@@ -44,19 +44,18 @@ export default function ParliamentSimulator({ parliamentData }: Props) {
   const [parliament, setParliament] = useState<Parliament>(new Parliament(initialParliament.name, initialParliament.country.alpha2, initialParliament.factions));
 
   return (
-    <div className="w-full flex flex-col gap-16 mb-16">
+    <div className="w-full flex flex-col gap-6 md:gap-16 mb-16">
       <div
-        className="w-full"
+        className="w-full h-48 md:h-96"
         style={{
           backgroundImage: `url('/${parliament
             .getCountry()
             .alpha2.toLocaleLowerCase()}.jpg')`,
-          height: '400px',
           backgroundPosition: 'center center',
           backgroundSize: 'cover',
         }}
       ></div>
-      <div className="flex flex-col container mx-auto gap-16 px-16">
+      <div className="flex flex-col container mx-auto gap-6 md:gap-16 px-3 md:px-16">
         <div>
           <div className="text-xl text-stone-500">
             {parliament.getCountry().name} &gt;
@@ -64,11 +63,11 @@ export default function ParliamentSimulator({ parliamentData }: Props) {
           <H1>{parliament.name}</H1>
         </div>
         <ApprovalBar parliament={parliament} />
-        <div className="flex">
-          <div className="w-2/5">
+        <div className="flex flex-wrap gap-y-6 md:gap-y-0">
+          <div className="w-full md:w-2/5">
             <VotingOverview votingBehaviour={parliament.getVotingBehaviour()} />
           </div>
-          <div className="w-3/5 flex flex-col gap-4">
+          <div className="w-full md:w-3/5 flex flex-col gap-4">
             {parliament.factions.map((faction) => (
               <FactionControlPanel
                 key={faction.getName()}

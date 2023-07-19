@@ -19,31 +19,28 @@ export default function GroupControlLine({ group, onUpdate }: Props) {
     <div className="flex  justify-between">
       <div className="flex gap-4 items-center">
         <div className="rounded-full w-4 h-4"></div>
-        <div>{group.getName()}</div>
+        <div class="w-full">{group.getName()}</div>
       </div>
       <div className="flex gap-2">
         <button onClick={() => updateVotingBehaviour('yes')}>
           <FiThumbsUp
-            className={`hover:stroke-green-600 ${
-              group.getVotingBehaviour().yes === group.getDeputies() &&
+            className={`hover:stroke-green-600 ${group.getVotingBehaviour().yes === group.getDeputies() &&
               'stroke-green-600'
-            }`}
+              }`}
           />
         </button>
         <button onClick={() => updateVotingBehaviour('abstention')}>
           <FiCircle
-            className={`hover:stroke-yellow-600 ${
-              group.getVotingBehaviour().abstentions === group.getDeputies() &&
+            className={`hover:stroke-yellow-600 ${group.getVotingBehaviour().abstentions === group.getDeputies() &&
               'stroke-yellow-600'
-            }`}
+              }`}
           />
         </button>
         <button onClick={() => updateVotingBehaviour('no')}>
           <FiThumbsDown
-            className={`hover:stroke-red-600 ${
-              group.getVotingBehaviour().no === group.getDeputies() &&
+            className={`hover:stroke-red-600 ${group.getVotingBehaviour().no === group.getDeputies() &&
               'stroke-red-600'
-            }`}
+              }`}
           />
         </button>
       </div>
