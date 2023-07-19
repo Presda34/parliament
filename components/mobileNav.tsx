@@ -5,10 +5,13 @@ import { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { H2 } from "./headings";
 import Image from 'next/image'
+import { Noto_Color_Emoji } from "next/font/google";
 
 type Props = {
   navItems: string[]
 }
+
+const notoColorEmoji = Noto_Color_Emoji({ subsets: ['emoji'], weight: "400" });
 
 export default function MobileNav({ navItems }: Props) {
   const [collapsed, setCollapsed] = useState(true);
@@ -29,11 +32,9 @@ export default function MobileNav({ navItems }: Props) {
     </div>
     {navItems.map((navItem) => (
       <a key={navItem} href={`/${navItem}`}>
-        <div className="flex">
-          <div className="w-12 flex">
-            <img
-              src={`https://flagcdn.com/24x18/${navItem}.png`}
-              alt="flag" />
+        <div className="flex items-center gap-4">
+          <div className={`text-2xl ${notoColorEmoji.className}`}>
+            {countries[navItem.toLocaleUpperCase()].emoji}
           </div>
           <div>{countries[navItem.toLocaleUpperCase()].name}</div>
         </div>
