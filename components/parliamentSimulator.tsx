@@ -41,10 +41,10 @@ export default function ParliamentSimulator({ initialParliament }: Props) {
         </div>
         <ApprovalBar parliament={parliament} />
         <div className="flex">
-          <div className="w-1/2">
+          <div className="w-2/5">
             <VotingOverview votingBehaviour={parliament.getVotingBehaviour()} />
           </div>
-          <div className="w-1/2 flex flex-col gap-4">
+          <div className="w-3/5 flex flex-col gap-4">
             {parliament.factions.map((faction) => (
               <FactionControlPanel
                 key={faction.getName()}

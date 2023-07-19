@@ -1,0 +1,188 @@
+  {
+    country: 'al',
+    name: 'Kuvendi',
+    factions: [
+      {
+        name: 'Partia Socialiste e Shqipërisë (PS)',
+        color: '#791770',
+        deputies: 74,
+      },
+      {
+        name: 'Die Partia Demokratike e Shqipërisë (PD-AN)',
+        color: '#016ba6',
+        deputies: 58,
+      },
+      {
+        name: 'Partia e Lirisë (LSI)',
+        color: '#dd0000',
+        deputies: 4,
+      },
+      {
+        name: 'Partia Socialdemokrate e Shqipërisë (PSD)',
+        color: '#045d31',
+        deputies: 3,
+      },
+      {
+        name: 'Independent',
+        color: '#aaaaaa',
+        deputies: 1,
+      },
+    ],
+    pollTypes: [],
+  },
+  {
+    country: 'ad',
+    name: 'Consell General de les Valls',
+    factions: [
+      {
+        name: 'Demòcrates per Andorra (DPA)',
+        color: '#ffa500',
+        deputies: 10,
+      },
+      {
+        name: 'Partit Socialdemòcrata (PSDA)',
+        color: '#e00000',
+        deputies: 7,
+      },
+      {
+        name: 'Partit Liberal d’Andorra (PLA)',
+        color: '#00b1f0',
+        deputies: 4,
+      },
+      {
+        name: 'Ciutadans Compromesos',
+        color: '#be3075',
+        deputies: 3,
+      },
+      {
+        name: 'Tercera Via & Unió Laurediana',
+        color: '#003397',
+        deputies: [
+          {
+            name: 'Tercera Via',
+            deputies: 1,
+          },
+          {
+            name: 'Unió Laurediana',
+            deputies: 2,
+          },
+        ],
+      },
+      {
+        name: 'Independent',
+        color: '#aaaaaa',
+        deputies: 1,
+      },
+    ],
+    pollTypes: [],
+  },
+  {
+    country: 'am',
+    name: 'Ազգային ժողով / Azgayin Zhoghov',
+    factions: [
+      {
+        name: `Քաղաքացիական պայմանագիր / K'aghak'atsiakan paymanagir`,
+        color: '#5169b1',
+        deputies: 71,
+      },
+      {
+        name: 'Partit Socialdemòcrata (PSDA)',
+        color: '#e00000',
+        deputies: 7,
+      },
+      {
+        name: 'Partit Liberal d’Andorra (PLA)',
+        color: '#00b1f0',
+        deputies: 4,
+      },
+      {
+        name: 'Ciutadans Compromesos',
+        color: '#be3075',
+        deputies: 3,
+      },
+      {
+        name: 'Tercera Via & Unió Laurediana',
+        color: '#003397',
+        deputies: [
+          {
+            name: 'Tercera Via',
+            deputies: 1,
+          },
+          {
+            name: 'Unió Laurediana',
+            deputies: 2,
+          },
+        ],
+      },
+      {
+        name: 'Independent',
+        color: '#aaaaaa',
+        deputies: 1,
+      },
+    ],
+    pollTypes: [],
+  },
+  {
+    country: 'at',
+    name: 'Nationalrat',
+    factions: [
+      {
+        name: 'SPÖ',
+        color: '#e31e2d',
+        deputies: 40,
+      },
+      {
+        name: 'Die Grünen',
+        color: '#51a51e',
+        deputies: 26,
+      },
+      {
+        name: 'NEOS',
+        color: '#e84188',
+        deputies: 15,
+      },
+      {
+        name: 'ÖVP',
+        color: '#63c3d0',
+        deputies: 71,
+      },
+      {
+        name: 'FPÖ',
+        color: '#205ca5',
+        deputies: 30,
+      },
+      {
+        name: 'Independent',
+        color: '#aaaaaa',
+        deputies: 1,
+      },
+    ],
+    pollTypes: [],
+  },
+  {
+    country: 'li',
+    name: 'Landtag',
+    factions: [
+      {
+        name: 'Vaterländische Union (VU)',
+        color: '#e32d3d',
+        deputies: 10,
+      },
+      {
+        name: 'Fortschrittliche Bürgerpartei in Liechtenstein (FBP)',
+        color: '#1273b8',
+        deputies: 10,
+      },
+      {
+        name: 'Freie Liste (FL)',
+        color: '#008000',
+        deputies: 3,
+      },
+      {
+        name: 'Demokraten pro Liechtenstein (DpL)',
+        color: '#0063ab',
+        deputies: 2,
+      },
+    ],
+    pollTypes: [],
+  },
