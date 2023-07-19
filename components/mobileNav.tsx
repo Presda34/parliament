@@ -6,6 +6,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { H2 } from "./headings";
 import Image from 'next/image'
 import { Noto_Color_Emoji } from "next/font/google";
+import FlagEmoji from "./flagEmoji";
 
 type Props = {
   navItems: string[]
@@ -33,8 +34,10 @@ export default function MobileNav({ navItems }: Props) {
     {navItems.map((navItem) => (
       <a key={navItem} href={`/${navItem}`}>
         <div className="flex items-center gap-4">
-          <div className={`text-2xl ${notoColorEmoji.className}`}>
-            {countries[navItem.toLocaleUpperCase()].emoji}
+          <div className="text-2xl">
+            <FlagEmoji>
+              {countries[navItem.toLocaleUpperCase()].emoji}
+            </FlagEmoji>
           </div>
           <div>{countries[navItem.toLocaleUpperCase()].name}</div>
         </div>

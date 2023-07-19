@@ -6,8 +6,9 @@ import { parliamentInformation } from './parlamentInformation';
 import { H2 } from '@/components/headings';
 import MobileNav from '@/components/mobileNav';
 import Image from 'next/image';
+import { userAgent } from 'next/server';
+import FlagEmoji from '@/components/flagEmoji';
 
-const notoColorEmoji = Noto_Color_Emoji({ subsets: ['emoji'], weight: "400" });
 const lato = Lato({ subsets: ['latin'], weight: '400' });
 
 export default async function RootLayout({
@@ -34,8 +35,10 @@ export default async function RootLayout({
             {navItems.map((navItem) => (
               <a key={navItem} href={`/${navItem}`}>
                 <div className="flex items-center gap-4">
-                  <div className={`text-2xl ${notoColorEmoji.className}`}>
-                    {countries[navItem.toLocaleUpperCase()].emoji}
+                  <div className="text-2xl">
+                    <FlagEmoji>
+                      {countries[navItem.toLocaleUpperCase()].emoji}
+                    </FlagEmoji>
                   </div>
                   <div>{countries[navItem.toLocaleUpperCase()].name}</div>
                 </div>
