@@ -11,7 +11,7 @@ const notoColorEmoji = Noto_Color_Emoji({ subsets: ['emoji'], weight: "400" });
 
 export default function FlagEmoji({ children }: Props) {
 
-  const [needIconFont, setNeedIconFont] = useState(false);
+  const [needIconFont, setNeedIconFont] = useState(true);
 
   useEffect(() => {
     setNeedIconFont(navigator && (navigator.userAgent.includes('Win') && navigator.userAgent.includes('Chrom')));
