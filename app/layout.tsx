@@ -22,6 +22,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <link rel="icon" href="https://fav.farm/🏛️" />
       <body className={lato.className + ' bg-stone-100'}>
         <div className="w-full flex min-h-screen">
           <aside

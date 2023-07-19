@@ -2,6 +2,9 @@
 
 import {
   FactionVotingBehaviour,
+  Group,
+  GroupedFaction,
+  MemberFaction,
   Parliament,
   ParliamentVotingBehaviour,
 } from '@/schema/schema';
@@ -13,11 +16,32 @@ import { H1 } from './headings';
 import VotingOverview from './votingOverview';
 
 type Props = {
-  initialParliament: Parliament;
+  parliamentData: { country: string; name: string; factions: ({ name: string; color: string; deputies: number; } | { name: string; color: string; deputies: { name: string; deputies: number; }[]; })[]; };
 };
 
-export default function ParliamentSimulator({ initialParliament }: Props) {
-  const [parliament, setParliament] = useState<Parliament>(initialParliament);
+export default function ParliamentSimulator({ parliamentData }: Props) {
+  const initialParliament = new Parliament(
+    parliamentData.name,
+    parliamentData.country,
+    parliamentData.factions.map((factionData) => {
+      if (Array.isArray(factionData.deputies)) {
+        return new GroupedFaction(
+          factionData.name,
+          factionData.color,
+          factionData.deputies.map((groupData) => {
+            return new Group(groupData.name, groupData.deputies);
+          }),
+        );
+      } else {
+        return new MemberFaction(
+          factionData.name,
+          factionData.color,
+          factionData.deputies,
+        );
+      }
+    }),
+  );
+  const [parliament, setParliament] = useState<Parliament>(new Parliament(initialParliament.name, initialParliament.country.alpha2, initialParliament.factions));
 
   return (
     <div className="w-full flex flex-col gap-16 mb-16">
