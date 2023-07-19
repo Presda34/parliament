@@ -1,5 +1,5 @@
 import { ParliamentVotingBehaviour, VotingBehaviour } from '@/schema/schema';
-import { useEffect, useState } from 'react';
+import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import AnimatedNumber from './animatedNumber';
 
 type Props = {
@@ -8,7 +8,8 @@ type Props = {
 
 export default function VotingOverview({ votingBehaviour }: Props) {
   return (
-    <div className="flex flex-col w-full justify-center items-center">
+    <div className="flex flex-col w-full justify-center items-center gap-2">
+      {votingBehaviour.yes > votingBehaviour.no ? <AiOutlineCheckCircle size={96} className="text-green-600" /> : <AiOutlineCloseCircle size={96} className="text-red-600" />}
       <div className="text-4xl">
         <AnimatedNumber number={votingBehaviour.yes} /> /{' '}
         <AnimatedNumber number={votingBehaviour.abstentions} /> /{' '}
