@@ -2,6 +2,7 @@
 
 import ApprovalBar from '@/components/approvalBar';
 import FactionControlPanel from '@/components/factionControlPanel';
+import { H1 } from '@/components/headings';
 import ParliamentSimulator from '@/components/parliamentSimulator';
 import VotingOverview from '@/components/votingOverview';
 import {
@@ -12,6 +13,7 @@ import {
   Parliament,
   ParliamentVotingBehaviour,
 } from '@/schema/schema';
+import { notFound } from 'next/navigation';
 import { useState } from 'react';
 import { parliamentInformation } from '../parlamentInformation';
 
@@ -25,7 +27,7 @@ export default function DE({ params }: Props) {
   const parliamentData = parliamentInformation.find(
     (parliament) => parliament.country === params.country,
   );
-  if (!parliamentData) return 'Error!';
+  if (!parliamentData) return notFound()
   const parliament = new Parliament(
     parliamentData.name,
     parliamentData.country,

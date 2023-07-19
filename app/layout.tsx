@@ -1,8 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Lato } from 'next/font/google';
-import { readdir } from 'fs/promises';
-import Flag from 'react-world-flags';
 import { countries } from 'country-data';
 import { parliamentInformation } from './parlamentInformation';
 import { H2 } from '@/components/headings';
@@ -30,7 +28,9 @@ export default async function RootLayout({
             className="bg-white shadow-lg px-4 py-4 flex flex-col gap-4"
             style={{ width: '300px' }}
           >
-            <H2>Countries</H2>
+            <a href="/">
+              <H2>Parliament Sim</H2>
+            </a>
             {navItems.map((navItem) => (
               <a key={navItem} href={`/${navItem}`}>
                 <div className="flex">
