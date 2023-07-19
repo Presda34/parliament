@@ -18,7 +18,9 @@ export default function GroupControlLine({ group, onUpdate }: Props) {
   return (
     <div className="flex  justify-between">
       <div className="flex gap-4 items-center">
-        <div className="rounded-full w-4 h-4"></div>
+        <div>
+          <div className="rounded-full w-4 h-4"></div>
+        </div>
         <div className="w-full">{group.getName()}</div>
       </div>
       <div className="flex gap-2">
