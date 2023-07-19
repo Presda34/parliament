@@ -6,5 +6,6 @@ import { ru } from './parliaments/ru';
 import { es } from './parliaments/es';
 import { tr } from './parliaments/tr';
 import { ua } from './parliaments/ua';
+import { pl } from './parliaments/pl';
 
-export const parliamentInformation = [fr, de, it, ru, es, tr, ua, gb];
+export const parliamentInformation = [fr, de, it, pl, ru, es, tr, ua, gb];
