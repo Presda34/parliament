@@ -1,6 +1,6 @@
 export const ua = {
   country: 'ua',
-  name: 'Verkhovna Rada',
+  name: 'Верховна Рада / Verkhovna Rada',
   factions: [
     {
       name: 'Sluha narodu (SN)',
