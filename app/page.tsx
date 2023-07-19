@@ -19,7 +19,7 @@ export default function Home() {
         Usage
       </H2>
       <p>Choose a country from the navigation on the left. You will be lead to this country&apos;s parliament&apos;s page and see a list of all parliamentary factions or group. Set their voting behaviour and watch the majority ratios change. </p>
-      <Image src="/tutorial.png" alt="" />
+      <img src="/tutorial.png" alt="" />
       <H2>
         Roadmap
       </H2>
