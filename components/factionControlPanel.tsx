@@ -36,35 +36,34 @@ export default function FactionControlPanel({ faction, onUpdate }: Props) {
     <div className="flex border-2 flex-col p-4 rounded-lg gap-2">
       <div className="flex  justify-between">
         <div className="flex gap-4 items-center">
-          <div
-            className="rounded-full w-4 h-4"
-            style={{ backgroundColor: faction.getColor() }}
-          ></div>
-          <div className={latoBold.className}>{faction.getName()}</div>
+          <div>
+            <div
+              className="rounded-full w-4 h-4"
+              style={{ backgroundColor: faction.getColor() }}
+            ></div>
+          </div>
+          <div className={`${latoBold.className} w-full`}>{faction.getName()}</div>
         </div>
         <div className="flex gap-2">
           <button onClick={() => updateVotingBehaviour('yes')}>
             <FiThumbsUp
-              className={`hover:stroke-green-600 ${
-                faction.getVotingBehaviour().yes === faction.getDeputies() &&
+              className={`hover:stroke-green-600 ${faction.getVotingBehaviour().yes === faction.getDeputies() &&
                 'stroke-green-600'
-              }`}
+                }`}
             />
           </button>
           <button onClick={() => updateVotingBehaviour('abstention')}>
             <FiCircle
-              className={`hover:stroke-yellow-600 ${
-                faction.getVotingBehaviour().abstentions ===
-                  faction.getDeputies() && 'stroke-yellow-600'
-              }`}
+              className={`hover:stroke-yellow-600 ${faction.getVotingBehaviour().abstentions ===
+                faction.getDeputies() && 'stroke-yellow-600'
+                }`}
             />
           </button>
           <button onClick={() => updateVotingBehaviour('no')}>
             <FiThumbsDown
-              className={`hover:stroke-red-600 ${
-                faction.getVotingBehaviour().no === faction.getDeputies() &&
+              className={`hover:stroke-red-600 ${faction.getVotingBehaviour().no === faction.getDeputies() &&
                 'stroke-red-600'
-              }`}
+                }`}
             />
           </button>
         </div>
