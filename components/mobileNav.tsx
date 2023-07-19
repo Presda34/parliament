@@ -4,6 +4,7 @@ import { countries } from "country-data";
 import { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { H2 } from "./headings";
+import Image from 'next/image'
 
 type Props = {
   navItems: string[]
@@ -32,8 +33,7 @@ export default function MobileNav({ navItems }: Props) {
           <div className="w-12 flex">
             <img
               src={`https://flagcdn.com/24x18/${navItem}.png`}
-              alt="flag"
-            />
+              alt="flag" />
           </div>
           <div>{countries[navItem.toLocaleUpperCase()].name}</div>
         </div>

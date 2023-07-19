@@ -5,6 +5,7 @@ import { countries } from 'country-data';
 import { parliamentInformation } from './parlamentInformation';
 import { H2 } from '@/components/headings';
 import MobileNav from '@/components/mobileNav';
+import Image from 'next/image';
 
 const lato = Lato({ subsets: ['latin'], weight: '400' });
 export const metadata: Metadata = {

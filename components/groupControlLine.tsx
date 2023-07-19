@@ -19,7 +19,7 @@ export default function GroupControlLine({ group, onUpdate }: Props) {
     <div className="flex  justify-between">
       <div className="flex gap-4 items-center">
         <div className="rounded-full w-4 h-4"></div>
-        <div class="w-full">{group.getName()}</div>
+        <div className="w-full">{group.getName()}</div>
       </div>
       <div className="flex gap-2">
         <button onClick={() => updateVotingBehaviour('yes')}>

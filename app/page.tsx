@@ -1,5 +1,6 @@
 import { H1, H2 } from '@/components/headings'
 import { Metadata } from 'next'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Home - Parliament Simulator',
@@ -17,8 +18,8 @@ export default function Home() {
       <H2>
         Usage
       </H2>
-      <p>Choose a country from the navigation on the left. You will be lead to this country's parliament's page and see a list of all parliamentary factions or group. Set their voting behaviour and watch the majority ratios change. </p>
-      <img src="/tutorial.png" alt="" />
+      <p>Choose a country from the navigation on the left. You will be lead to this country&apos;s parliament&apos;s page and see a list of all parliamentary factions or group. Set their voting behaviour and watch the majority ratios change. </p>
+      <Image src="/tutorial.png" alt="" />
       <H2>
         Roadmap
       </H2>
