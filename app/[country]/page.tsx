@@ -26,7 +26,6 @@ type Props = {
 
 export async function generateMetadata(
   { params }: Props,
-  parent?: ResolvingMetadata
 ): Promise<Metadata> {
   const parliamentData = parliamentInformation.find(
     (parliament) => parliament.country === params.country,
