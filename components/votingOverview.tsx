@@ -13,7 +13,7 @@ export default function VotingOverview({ votingBehaviour, parliament, onUpdate }
   return (
     <div className="flex flex-col w-full justify-center items-center gap-2">
       <div className="flex gap-2">
-        {parliament.getVotingModes().map(votingMode => <VotingModePill parliament={parliament} votingMode={votingMode} onUpdate={onUpdate} />)}
+        {parliament.getVotingModes().map((votingMode, idx) => <VotingModePill key={idx} parliament={parliament} votingMode={votingMode} onUpdate={onUpdate} />)}
       </div>
       {(votingBehaviour.yes / (votingBehaviour.no + votingBehaviour.yes)) >= parliament.getVotingMode().threshold ? <AiOutlineCheckCircle size={96} className="text-green-600" /> : <AiOutlineCloseCircle size={96} className="text-red-600" />}
       <div className="text-2xl md:text-4xl">
