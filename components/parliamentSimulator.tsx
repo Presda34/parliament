@@ -7,6 +7,7 @@ import {
   MemberFaction,
   Parliament,
   ParliamentVotingBehaviour,
+  VotingMode,
 } from '@/schema/schema';
 import { countries } from 'country-data';
 import { useState } from 'react';
@@ -16,10 +17,14 @@ import { H1 } from './headings';
 import VotingOverview from './votingOverview';
 
 type Props = {
-  parliamentData: { country: string; name: string; factions: ({ name: string; color: string; deputies: number; } | { name: string; color: string; deputies: { name: string; deputies: number; }[]; })[]; };
+  parliamentData: { country: string; name: string; factions: ({ name: string; color: string; deputies: number; } | { name: string; color: string; deputies: { name: string; deputies: number; }[]; })[]; votingModes: { name: string, threshold: number, abstainIsNo: boolean }[] };
 };
 
 export default function ParliamentSimulator({ parliamentData }: Props) {
+
+  const votingModes =
+    parliamentData.votingModes.map(votingMode => new VotingMode(votingMode.name, votingMode.threshold, votingMode.abstainIsNo))
+
   const initialParliament = new Parliament(
     parliamentData.name,
     parliamentData.country,
@@ -40,8 +45,10 @@ export default function ParliamentSimulator({ parliamentData }: Props) {
         );
       }
     }),
+    votingModes,
+    votingModes[0]
   );
-  const [parliament, setParliament] = useState<Parliament>(new Parliament(initialParliament.name, initialParliament.country.alpha2, initialParliament.factions));
+  const [parliament, setParliament] = useState<Parliament>(new Parliament(initialParliament.name, initialParliament.country.alpha2, initialParliament.factions, initialParliament.votingModes, initialParliament.activeVotingMode));
 
   return (
     <div className="w-full flex flex-col gap-6 md:gap-16 mb-16">
@@ -65,7 +72,19 @@ export default function ParliamentSimulator({ parliamentData }: Props) {
         <ApprovalBar parliament={parliament} />
         <div className="flex flex-wrap gap-y-6 md:gap-y-0">
           <div className="w-full md:w-2/5">
-            <VotingOverview votingBehaviour={parliament.getVotingBehaviour()} />
+            <VotingOverview votingBehaviour={parliament.getVotingBehaviour()} parliament={parliament}
+              onUpdate={() => {
+                setParliament(
+                  new Parliament(
+                    parliament.name,
+                    parliament.country.alpha2,
+                    parliament.factions,
+                    parliament.votingModes,
+                    parliament.activeVotingMode
+                  ),
+                );
+              }}
+            />
           </div>
           <div className="w-full md:w-3/5 flex flex-col gap-4">
             {parliament.factions.map((faction) => (
@@ -78,6 +97,8 @@ export default function ParliamentSimulator({ parliamentData }: Props) {
                       parliament.name,
                       parliament.country.alpha2,
                       parliament.factions,
+                      parliament.votingModes,
+                      parliament.activeVotingMode
                     ),
                   );
                 }}

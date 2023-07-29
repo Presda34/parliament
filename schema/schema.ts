@@ -4,11 +4,15 @@ export class Parliament {
   name: string;
   country: Country;
   factions: Faction[];
+  votingModes: VotingMode[];
+  activeVotingMode: VotingMode;
 
-  constructor(name: string, country: string, factions: Faction[]) {
+  constructor(name: string, country: string, factions: Faction[], votingModes: VotingMode[], activeVotingMode: VotingMode) {
     this.name = name;
     this.country = countries[country.toLocaleUpperCase()];
     this.factions = factions;
+    this.votingModes = votingModes;
+    this.activeVotingMode = activeVotingMode;
   }
 
   getName(): string {
@@ -46,6 +50,19 @@ export class Parliament {
     if (!faction) throw 'FactionNotFoundError';
     return faction;
   }
+
+  getVotingMode(): VotingMode {
+    return this.activeVotingMode;
+  }
+
+  getVotingModes(): VotingMode[] {
+    return this.votingModes;
+  }
+
+  setVotingMode(votingMode: VotingMode) {
+    this.activeVotingMode = votingMode;
+  }
+
 }
 
 export interface Faction {
@@ -171,6 +188,18 @@ export class Group {
   }
   getNonAbstainingDeputies(): number {
     return this.votingBehaviour.yes + this.votingBehaviour.no;
+  }
+}
+
+export class VotingMode {
+  name: string;
+  threshold: number;
+  abstainIsNo: boolean
+
+  constructor(name: string, threshold: number, abstainIsNo: boolean) {
+    this.name = name;
+    this.threshold = threshold;
+    this.abstainIsNo = abstainIsNo;
   }
 }
 

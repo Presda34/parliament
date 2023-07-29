@@ -5,7 +5,7 @@ type Props = {
 };
 
 export default function ApprovalBar({ parliament }: Props) {
-  const totalVotes = parliament.getNonAbstainingDeputies();
+  const totalVotes = parliament.getVotingMode().abstainIsNo ? parliament.getDeputies() : parliament.getNonAbstainingDeputies();
   return (
     <div className="flex w-full rounded-full overflow-hidden h-8 md:h-16 bg-stone-200">
       {parliament.factions.map((faction) => {
