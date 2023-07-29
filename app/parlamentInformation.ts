@@ -9,5 +9,6 @@ import { ua } from './parliaments/ua';
 import { pl } from './parliaments/pl';
 import { ro } from './parliaments/ro';
 import { us } from './parliaments/us';
+import { cn } from './parliaments/cn';
 
-export const parliamentInformation = [fr, de, it, pl, ro, ru, es, tr, ua, gb, us];
+export const parliamentInformation = [cn, fr, de, it, pl, ro, ru, es, tr, ua, gb, us];
