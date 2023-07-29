@@ -38,4 +38,11 @@ export const ro = {
       deputies: 38,
     },
   ],
+  votingModes: [
+    {
+      name: 'Normal vote',
+      threshold: 0.5,
+      abstainIsNo: false
+    },
+  ]
 };

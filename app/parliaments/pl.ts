@@ -87,4 +87,11 @@ export const pl = {
       deputies: 4,
     },
   ],
+  votingModes: [
+    {
+      name: 'Normal vote',
+      threshold: 0.5,
+      abstainIsNo: false
+    },
+  ]
 };
