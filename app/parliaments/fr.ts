@@ -8,59 +8,59 @@ export const fr = {
       deputies: [
         {
           name: 'Renaissance',
-          deputies: 170,
+          deputies: 95,
         },
         {
-          name: 'Der Mouvement démocrate',
-          deputies: 51,
+          name: 'Mouvement démocrate',
+          deputies: 36,
         },
         {
           name: 'Horizons',
-          deputies: 29,
+          deputies: 33,
         },
       ],
     },
     {
-      name: 'Nouvelle union populaire écologique et sociale (NUPES)',
+      name: 'Nouveau Front Populaire (NFP)',
       color: '#c71585',
       deputies: [
         {
           name: 'La France insoumise',
-          deputies: 74,
+          deputies: 71,
         },
         {
           name: 'Parti socialiste',
-          deputies: 31,
+          deputies: 66,
         },
         {
           name: 'Pôle écologiste',
-          deputies: 22,
+          deputies: 38,
         },
         {
           name: 'Parti communiste français',
-          deputies: 22,
+          deputies: 17,
         },
       ],
     },
     {
       name: 'Rassemblement National (RN)',
       color: '#004a77',
-      deputies: 88,
+      deputies: 124,
     },
     {
       name: 'Les Républicains (LR)',
       color: '#0066cc',
-      deputies: 19,
+      deputies: 47,
     },
     {
       name: 'Le groupe Libertés, indépendants, outre-mer et territoires (LIOT)',
       color: '#e0b0ff',
-      deputies: 20,
+      deputies: 23,
     },
     {
       name: 'Independent',
       color: '#aaaaaa',
-      deputies: 5,
+      deputies: 10,
     },
   ],
   pollTypes: [],
